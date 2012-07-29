@@ -6,7 +6,7 @@
 		
 		<!-- form -->
 		<div data-role="fieldcontain">
-    <form action="setcookie.php" method="post">
+    <form data-ajax="false" action="setcookie.php" method="post">
     <label for="name">Text Input:</label>
     <input type="text" name="name" id="name" value=""  />
 

@@ -25,6 +25,7 @@ $apiUrl = "https://api.sklik.cz/RPC2";
 
 
 
-<div data-role="header"> 
-	<h1><a href="index.php">Zpátky na login</a></h1> 
+<div data-role="header">
+	<h1>Sklik webapp - prealfa</h1>
+	<a href="/sklik-webapp" data-icon="check" data-theme="b">Zpátky</a>
 </div>
