@@ -2,37 +2,26 @@
 
 <div id="header">
   <img src="img/sklik_logo.png" />
-    <div id="klient">  
-    <?php   
-    $klient = volej("client.getAttributes");
     
-    echo $klient["user"]["username"]."<br />";
-    $kreditTecka = $klient["user"]["walletCredit"]/100;
-    $kredit=number_format($kreditTecka,2,","," ");
-    echo $kredit." Kè";
-    ?>    
-    </div>
-
   <img id="logout" src="img/logout.png" />
 </div>
 
 <?php
-  $kampane = volej("listCampaigns");
-    // print_r($kampane);
+  $groups = volej("listGroups",intval($_GET["id"]));
+  // print_r($groups);
     
-    foreach ($kampane["campaigns"] as $kampan) {   
-      $id = $kampan["id"];
-      $vytvoreniKampane = $kampan["createDate"];    
+    foreach ($groups["groups"] as $group) {   
+      $id = $group["id"];
+      $vytvoreniGroup = $group["createDate"];    
       
-      
+      /* dnešní datum jako objekt */     
       $datumDo = new stdClass;
       $datumDo->scalar = date("c");
       $datumDo->xmlrpc_type = "datetime";
       $datumDo->timestamp = time();
 
-      
-      $statistikyArray = array($id,$vytvoreniKampane,$datumDo);
-      $statistiky = volej("campaign.stats",$statistikyArray);
+      $statistikyArray = array($id,$vytvoreniGroup,$datumDo);
+      $statistiky = volej("group.stats",$statistikyArray);
       // print_r($statistiky);
       
       
@@ -44,16 +33,13 @@
       }
       
       $cena = $statistiky["stats"]["money"]/100;                                            
-      $rozpocet = $kampan["dayBudget"]/100;
-      $status = $kampan["status"];
-    
-    
-       
-                  
+      $prumernaPozice = $statistiky["stats"]["avgPosition"];
+      $status = $group["status"];
+               
         echo      
         '<div class="kampan '.$status.'">
           <div class="inside">
-          <h2>'.$kampan["name"].'</h2>
+          <h2>'.$group["name"].'</h2>
           <div class="kampanData">
           
             <div class="jednaTri">
@@ -73,8 +59,8 @@
                       
            
             <div class="jednaTri">
-              Denní rozpoèet
-              <strong>'.$rozpocet.'</strong>
+              Prùmìrná pozice
+              <strong>'.$prumernaPozice.'</strong>
             </div>
             
             <div class="jednaTri">
@@ -91,11 +77,9 @@
           
           </div>
           </div>
-          <a class="kampanLink" href="adgroup.php?id='.$id.'"><span></span></a>
         </div>';                         
       
-    };
-       
+    };       
 ?>             
 
 <?php include ('inc/footer.php') ?>
