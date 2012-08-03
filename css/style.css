@@ -1,0 +1,46 @@
+body {
+	background: #ebebeb;
+}
+.clear {
+	visibility: none;
+	clear: both;
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 0;
+}
+.kampan {
+	background: white;
+}
+.kampan .inside {
+	border-right: 10px solid #7cc576;
+	padding: 10px 0 20px 10px;
+	margin-top: 5px
+}
+.suspend {
+          /* background:#fafafa;*/
+          opacity:0.7;
+         }
+.suspend .inside {
+                 border-right:10px solid #c5c5c5;
+                 }
+.kampan .inside h2 {
+	margin: 0;
+}
+.kampan .inside .jednaTri {
+	width: 33%;
+	float: left;
+	color: #959595;
+	font-size: 10px;
+	margin-top: 10px
+}
+.kampan .inside .jednaTri strong {
+	clear: both;
+	display: block;
+	22px;
+	color: black;
+	font-size: 22px
+}
+
+#header {padding:10px}
+#logout {position:absolute; top:10px;right:10px}
