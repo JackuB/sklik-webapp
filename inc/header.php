@@ -5,8 +5,15 @@ if(!isset($_COOKIE["TestCookie"])) {
   die;
 }
 
-function volej($metoda) {
-  $request = xmlrpc_encode_request($metoda, array($_COOKIE["TestCookie"]));
+function volej($metoda,$dalsi = "") {
+  $predat = array($_COOKIE["TestCookie"]);
+  
+  if($dalsi != "") {
+    $predat = array_merge((array)$predat,(array)$dalsi);
+  }
+  
+  
+  $request = xmlrpc_encode_request($metoda, $predat);
   
   $context = stream_context_create(array('http' => array(
       'method' => "POST",
@@ -29,6 +36,7 @@ function volej($metoda) {
 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
   <link rel="stylesheet" href="css/style.css" />
+  
 	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
 </head> 

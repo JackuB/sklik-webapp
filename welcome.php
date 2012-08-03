@@ -3,8 +3,7 @@
 <div id="header">
   <img src="img/sklik_logo.png" />
     <div id="klient">  
-    <?php
-    
+    <?php   
     $klient = volej("client.getAttributes");
     
     echo $klient["user"]["username"]."<br />";
@@ -13,25 +12,38 @@
     echo $kredit." Kè";
     ?>    
     </div>
-  
-  
-  
-  
+
   <img id="logout" src="img/logout.png" />
 </div>
+
 <?php
-
-
- 
-    $kampane = volej("listCampaigns");
+  $kampane = volej("listCampaigns");
     // print_r($kampane);
     
     foreach ($kampane["campaigns"] as $kampan) {   
+      $id = $kampan["id"];
+      $vytvoreniKampane = $kampan["createDate"];    
+      
+      
+      $datumDo = new stdClass;
+      // $datumDo->scalar = "20120724T15:00:37+0200";
+      $datumDo->scalar = date("c");
+      $datumDo->xmlrpc_type = "datetime";
+      $datumDo->timestamp = time();
+
+      
+      $statistikyArray = array($id,$vytvoreniKampane,$datumDo);
+      $statistiky = volej("campaign.stats",$statistikyArray);
+      // print_r($statistiky);
+      $ctr = $statistiky["stats"]["impressions"]/$statistiky["stats"]["clicks"];  
+      $cpc = $statistiky["stats"]["money"]/$statistiky["stats"]["clicks"]; 
+      
+      $rozpocet = $kampan["dayBudget"]/100;
+      $status = $kampan["status"];
     
-    $rozpocet = $kampan["dayBudget"]/100;
-    $status = $kampan["status"];
     
-              
+    
+                  
         echo      
         '<div class="kampan '.$status.'">
           <div class="inside">
@@ -40,17 +52,17 @@
           
             <div class="jednaTri">
               Prokliky
-              <strong>196</strong>
+              <strong>'.$statistiky["stats"]["clicks"].'</strong>
             </div>
             
             <div class="jednaTri">
               Zobrazení
-              <strong>136 657</strong>
+              <strong>'.$statistiky["stats"]["impressions"].'</strong>
             </div>
             
             <div class="jednaTri">
               CTR
-              <strong>1,68%</strong>
+              <strong>'.$ctr.'</strong>
             </div>
                       
            
@@ -61,12 +73,12 @@
             
             <div class="jednaTri">
               Prùmìrná CPC
-              <strong>9,68</strong>
+              <strong>'.$cpc.'</strong>
             </div>
             
             <div class="jednaTri">
               Cena
-              <strong>1 987,44</strong>
+              <strong>'.$statistiky["stats"]["money"].'</strong>
             </div>                    
           
             <br class="clear" />
