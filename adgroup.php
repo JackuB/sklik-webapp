@@ -3,11 +3,18 @@
 <img id="logout" src="img/logout.png" />
 <div id="header">
   
-    
+<?php
+ $nazevKamapane = volej("campaign.getAttributes",intval($_GET["id"]));
+ echo "<h2>".$nazevKamapane["campaign"]["name"]."</h2>";
+?>    
   
 </div>
+
+<h3 class="desetleva">Prokliky za posledních 7 dnù</h3>
 <div class="grafProkliku">
 <?php
+/* VYKRESLENÍ GRAFU */
+
 $i = 0;
 $grafProkliku = array();
 do {
@@ -52,6 +59,8 @@ echo '
 $n++;
 }       
 
+
+/* KONEC VYKRESLENÍ GRAFU */
 ?>
 </div>
 
@@ -60,10 +69,7 @@ $n++;
 
 
 <?php
-
-
-
- /* TODO multicall 
+/* TODO multicall 
     $paramArray = array(
           array(
              array(
@@ -77,22 +83,25 @@ $n++;
           )
        );
 
-
-
-
-
 $multipass = multivolej("system.multicall",$paramArray);
 print_r($multipass);
-                         */
+*/
+?>
 
- 
+
+<?php
+  /* VÝPIS */
   $groups = volej("listGroups",intval($_GET["id"]));
   
     foreach ($groups["groups"] as $group) { 
             
       $id = $group["id"];
       $vytvoreniGroup = $group["createDate"];
-      $nazevGroup = iconv("UTF-8", "WINDOWS-1250//TRANSLIT", $group["name"]); /* vážnì se group vrací v UTF8?! */    
+      if(mb_detect_encoding($group["name"], 'UTF-8', true) == "UTF-8") { /* OBÈAS se group vrací jako UTF-8 - ale zbytek stránky je windows-1250 - WTF */
+        $nazevGroup = iconv("UTF-8", "WINDOWS-1250//TRANSLIT", $group["name"]);     
+      } else {
+        $nazevGroup = $group["name"];
+      }
 
       /* dnešní datum jako objekt */     
       $datumDo = new stdClass;

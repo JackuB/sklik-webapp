@@ -1,42 +1,73 @@
 <?php
+$predat = array($_COOKIE["Session"]);
+$apiUrl = "https://77.75.77.28/RPC2"; /* nebudeme ztrácet èas s DNS */
 
+/* Hlavní volej() */
 function volej($metoda,$dalsi = "") {
-  $predat = array($_COOKIE["Session"]);
-  
   if($dalsi != "") {
     $predat = array_merge((array)$predat,(array)$dalsi);
   }
-  
-  
-  $request = xmlrpc_encode_request($metoda, $predat);
-  
-  $context = stream_context_create(array('http' => array(
-      'method' => "POST",
-      'header' => "Content-Type: text/xml",     
-      'content' => $request
-  )));
-    
-  $xmlOdpoved = file_get_contents("https://api.sklik.cz/RPC2", FILE_TEXT, $context);
-  $odpoved = xmlrpc_decode($xmlOdpoved);
-  
-  return $odpoved;
+
+$request = xmlrpc_encode_request($metoda, $predat);
+$req = curl_init($apiUrl);
+
+// Nastavení hlavièek
+$headers = array();
+array_push($headers,"Content-Type: text/xml");
+array_push($headers,"\r\n");
+
+// údaje o pøipojení
+curl_setopt($req, CURLOPT_URL, $apiUrl);
+
+// curl nastavení
+curl_setopt($req, CURLOPT_SSL_VERIFYPEER, FALSE);
+curl_setopt($req, CURLOPT_SSL_VERIFYHOST, FALSE);
+curl_setopt( $req, CURLOPT_CUSTOMREQUEST, "POST" );
+curl_setopt($req, CURLOPT_RETURNTRANSFER, 1 );
+curl_setopt($req, CURLOPT_HTTPHEADER, $headers );
+curl_setopt( $req, CURLOPT_POSTFIELDS, $request );
+
+// pøipojení
+$file = curl_exec($req);
+
+curl_close($req);
+
+$odpoved = xmlrpc_decode($file);
+
+return $odpoved;
 }
 
+
+
+
+/* pro multicall */
 function multivolej($metoda,$dalsi = "") {
+$request = xmlrpc_encode_request($metoda, $dalsi);
+$req = curl_init($apiUrl);
 
+// Nastavení hlavièek
+$headers = array();
+array_push($headers,"Content-Type: text/xml");
+array_push($headers,"\r\n");
 
-  $request = xmlrpc_encode_request($metoda, $dalsi);
-  
-  $context = stream_context_create(array('http' => array(
-      'method' => "POST",
-      'header' => "Content-Type: text/xml",     
-      'content' => $request
-  )));
-    
-  $xmlOdpoved = file_get_contents("https://api.sklik.cz/RPC2", FILE_TEXT, $context);
-  $odpoved = xmlrpc_decode($xmlOdpoved);
-  
-  return $odpoved;
+// údaje o pøipojení
+curl_setopt($req, CURLOPT_URL, $apiUrl);
+
+// curl nastavení
+curl_setopt($req, CURLOPT_SSL_VERIFYPEER, FALSE);
+curl_setopt($req, CURLOPT_SSL_VERIFYHOST, FALSE);
+curl_setopt( $req, CURLOPT_CUSTOMREQUEST, "POST" );
+curl_setopt($req, CURLOPT_RETURNTRANSFER, 1 );
+curl_setopt($req, CURLOPT_HTTPHEADER, $headers );
+curl_setopt( $req, CURLOPT_POSTFIELDS, $request );
+
+// pøipojení
+$file = curl_exec($req);
+
+curl_close($req);
+
+$odpoved = xmlrpc_decode($file);
+
+return $odpoved;
 }
-
 ?>

@@ -18,16 +18,41 @@ $apiUrl = "https://api.sklik.cz/RPC2";
 
 if(($_POST["name"] != "") or ($_POST["password"] != "")) {
 
-  $params = array($_POST["name"],$_POST["password"]);
-  
-  $request = xmlrpc_encode_request("client.login", $params);
-  $context = stream_context_create(array('http' => array(
-      'method' => "POST",
-      'header' => "Content-Type: text/xml",
-      'content' => $request
-  )));
-  $file = file_get_contents($apiUrl, false, $context);
-  $response = xmlrpc_decode($file);
+
+
+$method = "client.login";
+
+
+//Using the XML-RPC extension to format the XML package
+$request = xmlrpc_encode_request($method, array($_POST["name"], $_POST["password"]));
+$req = curl_init($service_url);
+
+// Using the cURL extension to send it off,  first creating a custom header block
+$headers = array();
+array_push($headers,"Content-Type: text/xml");
+array_push($headers,"Content-Length: ".strlen($request));
+array_push($headers,"\r\n");
+
+//URL to post to
+curl_setopt($req, CURLOPT_URL, $apiUrl);
+
+//Setting options for a secure SSL based xmlrpc server
+curl_setopt($req, CURLOPT_SSL_VERIFYPEER, FALSE);
+curl_setopt($req, CURLOPT_SSL_VERIFYHOST, FALSE);
+curl_setopt( $req, CURLOPT_CUSTOMREQUEST, "POST" );
+curl_setopt($req, CURLOPT_RETURNTRANSFER, 1 );
+curl_setopt($req, CURLOPT_HTTPHEADER, $headers );
+curl_setopt( $req, CURLOPT_POSTFIELDS, $request );
+
+//Finally run
+$file = curl_exec($req);
+
+//Close the cURL connection
+curl_close($req);
+
+//Decoding the response to be displayed
+$response = xmlrpc_decode($file);
+
   
   /* sledujeme response status - potom rozhodneme co dál */
   if ($response["status"] == "200") {
