@@ -1,9 +1,10 @@
 <?php
-$predat = array($_COOKIE["Session"]);
-$apiUrl = "https://77.75.77.28/RPC2"; /* nebudeme ztrácet èas s DNS */
+
 
 /* Hlavní volej() */
 function volej($metoda,$dalsi = "") {
+$predat = array($_COOKIE["Session"]);
+$apiUrl = "https://77.75.77.28/RPC2"; /* nebudeme ztrácet èas s DNS */
   if($dalsi != "") {
     $predat = array_merge((array)$predat,(array)$dalsi);
   }
@@ -42,6 +43,8 @@ return $odpoved;
 
 /* pro multicall */
 function multivolej($metoda,$dalsi = "") {
+$predat = array($_COOKIE["Session"]);
+$apiUrl = "https://77.75.77.28/RPC2"; /* nebudeme ztrácet èas s DNS */
 $request = xmlrpc_encode_request($metoda, $dalsi);
 $req = curl_init($apiUrl);
 

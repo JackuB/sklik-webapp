@@ -1,12 +1,37 @@
 /* CSS Mobile Reset */
-html,body{margin:0;padding:0;border:0;}
-body{font-family:Arial,sans-serif;line-height:1.5;font-size:16px;background:#fff;padding:0;margin:0;color:#000;word-wrap:break-word;-webkit-text-size-adjust:none;}
-h1,h2,h3,h4,h5,h6{font-weight:700;}
-p img{float:left;margin:0 10px 5px 0;padding:0;}
-img{border:0;max-width:100%;}
-table{width:auto;border-collapse:collapse;border-spacing:0;}
-
-
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+body {
+	font-family: Arial, sans-serif;
+	line-height: 1.5;
+	font-size: 16px;
+	background: #fff;
+	padding: 0;
+	margin: 0;
+	color: #000;
+	word-wrap: break-word;
+	-webkit-text-size-adjust: none;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 700;
+}
+p img {
+	float: left;
+	margin: 0 10px 5px 0;
+	padding: 0;
+}
+img {
+	border: 0;
+	max-width: 100%;
+}
+table {
+	width: auto;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 body {
 	background: #ebebeb;
 }
@@ -35,7 +60,7 @@ body {
 }
 .kampan .inside h2 {
 	margin: 0;
-	padding-right: 55px;
+	padding-right: 45px;
 }
 .kampan .inside h2 em {
 	color: #ccc;
@@ -68,7 +93,6 @@ body {
 	height: 100%;
 	top: 0;
 	left: 0;
-/* edit: added z-index */
 	z-index: 1;
 }
 .grafProkliku {
@@ -96,4 +120,177 @@ body {
 .otevritKeyword span {
 	background: url('../img/download.png') no-repeat 100% -10px;
 	margin-left: -20px
+}
+#background {
+	position: absolute;
+	height: 200%;
+	width: 100%;
+	background: #e70a0a;
+}
+#prvni {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: #66f1cb;
+	-webkit-animation: slidefromtop 70s infinite;
+	-moz-animation:    slidefromtop 70s infinite;
+	-ms-animation:     slidefromtop 70s infinite;
+	-o-animation:      slidefromtop 70s infinite;
+}
+#druhy {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: #00bff3;
+	-webkit-animation: slidefromtop2 45s infinite;
+	-moz-animation:    slidefromtop2 45s infinite;
+	-ms-animation:     slidefromtop2 45s infinite;
+	-o-animation:      slidefromtop2 45s infinite;
+}
+.loadingLogo {
+	position: absolute;
+	z-index: 100;
+	left: 50%;
+	margin-left: -100px;
+	top: 50%;
+	margin-top: -48px;
+	width: 200px;
+}
+.fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+.ui-loader-verbose {opacity:1}
+
+/* Prefixy? Ano, máme prefixy */
+@-webkit-keyframes slidefromtop{0%{height:0%;}
+5%{height:100%;}
+10%{height:0%;background:b7f300;}
+15%{height:100%;}
+20%{height:0%;}
+25%{height:100%;}
+30%{height:0%;}
+45%{height:100%;background:yellow;}
+50%{height:0%;}
+55%{height:100%;}
+60%{height:0%;background:#6149c9}
+65%{height:100%;}
+70%{height:0%;}
+75%{height:100%;}
+80%{height:0%;}
+85%{height:100%;}
+90%{height:0%;}
+95%{height:100%;}
+100%{height:0%;}
+}
+@-webkit-keyframes slidefromtop2{0%{height:0%;}
+10%{height:100%;top:100%;}
+20%{height:0%;}
+30%{height:100%;}
+40%{height:0%;background:#6df166;top:0;}
+50%{height:100%;}
+60%{height:0%;}
+70%{height:100%;}
+80%{height:0%;}
+90%{height:100%;}
+100%{height:0%;}
+}
+@-moz-keyframes slidefromtop{0%{height:0%;}
+5%{height:100%;}
+10%{height:0%;background:b7f300;}
+15%{height:100%;}
+20%{height:0%;}
+25%{height:100%;}
+30%{height:0%;}
+45%{height:100%;background:yellow;}
+50%{height:0%;}
+55%{height:100%;}
+60%{height:0%;background:#6149c9}
+65%{height:100%;}
+70%{height:0%;}
+75%{height:100%;}
+80%{height:0%;}
+85%{height:100%;}
+90%{height:0%;}
+95%{height:100%;}
+100%{height:0%;}
+}
+@-moz-keyframes slidefromtop2{0%{height:0%;}
+10%{height:100%;top:100%;}
+20%{height:0%;}
+30%{height:100%;}
+40%{height:0%;background:#6df166;top:0;}
+50%{height:100%;}
+60%{height:0%;}
+70%{height:100%;}
+80%{height:0%;}
+90%{height:100%;}
+100%{height:0%;}
+}
+@-ms-keyframes slidefromtop{0%{height:0%;}
+5%{height:100%;}
+10%{height:0%;background:b7f300;}
+15%{height:100%;}
+20%{height:0%;}
+25%{height:100%;}
+30%{height:0%;}
+45%{height:100%;background:yellow;}
+50%{height:0%;}
+55%{height:100%;}
+60%{height:0%;background:#6149c9}
+65%{height:100%;}
+70%{height:0%;}
+75%{height:100%;}
+80%{height:0%;}
+85%{height:100%;}
+90%{height:0%;}
+95%{height:100%;}
+100%{height:0%;}
+}
+@-ms-keyframes slidefromtop2{0%{height:0%;}
+10%{height:100%;top:100%;}
+20%{height:0%;}
+30%{height:100%;}
+40%{height:0%;background:#6df166;top:0;}
+50%{height:100%;}
+60%{height:0%;}
+70%{height:100%;}
+80%{height:0%;}
+90%{height:100%;}
+100%{height:0%;}
+}
+@-o-keyframes slidefromtop{0%{height:0%;}
+5%{height:100%;}
+10%{height:0%;background:b7f300;}
+15%{height:100%;}
+20%{height:0%;}
+25%{height:100%;}
+30%{height:0%;}
+45%{height:100%;background:yellow;}
+50%{height:0%;}
+55%{height:100%;}
+60%{height:0%;background:#6149c9}
+65%{height:100%;}
+70%{height:0%;}
+75%{height:100%;}
+80%{height:0%;}
+85%{height:100%;}
+90%{height:0%;}
+95%{height:100%;}
+100%{height:0%;}
+}
+@-o-keyframes slidefromtop2{0%{height:0%;}
+10%{height:100%;top:100%;}
+20%{height:0%;}
+30%{height:100%;}
+40%{height:0%;background:#6df166;top:0;}
+50%{height:100%;}
+60%{height:0%;}
+70%{height:100%;}
+80%{height:0%;}
+90%{height:100%;}
+100%{height:0%;}
 }
