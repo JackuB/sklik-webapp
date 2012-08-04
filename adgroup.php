@@ -1,10 +1,63 @@
 <?php include ('inc/header.php') ?>
-
+<a href="welcome.php"><img src="img/back.png" /></a>
+<img id="logout" src="img/logout.png" />
 <div id="header">
-  <img src="img/sklik_logo.png" />
+  
     
-  <img id="logout" src="img/logout.png" />
+  
 </div>
+<div class="grafProkliku">
+<?php
+$i = 0;
+$grafProkliku = array();
+do {
+  $i++;
+  $datum = time() - $i*3600*24;
+  $c = $i-1;
+  $datumDalsiDen = time() - $c*3600*24;
+
+    $datumOd = new stdClass;
+    $datumOd->scalar = date('c', $datum);
+    $datumOd->xmlrpc_type = "datetime";
+    $datumOd->timestamp = $datum;
+    
+    $datumDo = new stdClass;
+    $datumDo->scalar = date('c', $datumDalsiDen);
+    $datumDo->xmlrpc_type = "datetime";
+    $datumDo->timestamp = $datumDo;  
+    
+$proklikyArray = array(intval($_GET["id"]),$datumOd,$datumDo);  
+$proklikyGraf = volej("campaign.stats",$proklikyArray);
+
+array_push($grafProkliku, $proklikyGraf["stats"]["clicks"]);
+  
+} while ($i < 7);
+
+$grafProklikuMax = max($grafProkliku);
+
+$n = 0;
+$grafProklikuPozpatku = array_reverse($grafProkliku);
+
+foreach ($grafProklikuPozpatku as $den) {
+$leftProcento = 100/count($grafProkliku);
+$left = $n*$leftProcento;
+if ($den != 0) {
+$hodnota = $den/$grafProklikuMax*100;
+} else {
+$hodnota = 5; }
+echo '
+<div class="wrapSloupce" style="left:'.$left.'%;width:'.$leftProcento.'%;height:'.$hodnota.'%">
+<div title="'.$den.'" class="sloupecGrafu"></div>
+</div>';
+$n++;
+}
+
+?>
+</div>
+
+
+
+
 
 <?php
   $groups = volej("listGroups",intval($_GET["id"]));
@@ -12,7 +65,8 @@
     
     foreach ($groups["groups"] as $group) {   
       $id = $group["id"];
-      $vytvoreniGroup = $group["createDate"];    
+      $vytvoreniGroup = $group["createDate"];
+      $nazevGroup = iconv("UTF-8", "WINDOWS-1250//TRANSLIT", $group["name"]); /* vážnì se group vrací v UTF8?! */    
       
       /* dnešní datum jako objekt */     
       $datumDo = new stdClass;
@@ -39,7 +93,7 @@
         echo      
         '<div class="kampan '.$status.'">
           <div class="inside">
-          <h2>'.$group["name"].'</h2>
+          <h2>'.$nazevGroup.'</h2>
           <div class="kampanData">
           
             <div class="jednaTri">

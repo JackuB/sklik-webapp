@@ -1,3 +1,33 @@
+/* CSS Mobile Reset */
+html, body
+{
+ margin: 0;
+ padding: 0; 
+ border: 0;
+}
+
+body 
+{
+ font-family:Arial,  sans-serif;
+ line-height:1.5;
+ font-size:16px;
+ background: #fff;
+ padding:0;
+ margin:0;
+ color: #000;
+ word-wrap: break-word;
+ -webkit-text-size-adjust: none;
+}
+
+h1, h2, h3, h4, h5, h6{ font-weight: 700; }
+
+p img { float: left; margin: 0 10px 5px 0; padding: 0; }
+
+img { border: 0; max-width: 100%; }
+
+table { width:auto; border-collapse: collapse;border-spacing: 0; }
+
+
 body {
 	background: #ebebeb;
 }
@@ -56,3 +86,14 @@ body {
   z-index: 1;
    
 }
+
+.grafProkliku {
+height:150px;width:100%;position:relative;
+}
+.grafProkliku .wrapSloupce {
+position:absolute;
+bottom:0;
+margin-right:5px;
+float:left;
+}
+.grafProkliku .wrapSloupce .sloupecGrafu {width:90%;height:100%;background:#329fd7}

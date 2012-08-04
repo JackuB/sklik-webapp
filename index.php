@@ -13,7 +13,7 @@ if(isset($_COOKIE["Session"])) {
 <!DOCTYPE html> 
 <html> 
 <head> 
-	<title>Sklik webapp</title> 
+	<title>Sklik Mobile</title> 
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" /> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
@@ -23,13 +23,6 @@ if(isset($_COOKIE["Session"])) {
 </head> 
 
 <body> 
-
-
-<div data-role="header">
-	<h1>Sklik webapp</h1>
-	<a href="/sklik-webapp" data-icon="check" data-theme="b">Zpátky</a>
-</div>
-
 	<div data-role="content">	
 		
 		<?php 
