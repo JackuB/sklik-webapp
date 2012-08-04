@@ -1,31 +1,15 @@
 <?php
 /* uživatele bez cookie pøesmìrovat na login */
-if(!isset($_COOKIE["TestCookie"])) {
+if(!isset($_COOKIE["Session"])) {
   header('Location: index.php');
   die;
 }
 
-function volej($metoda,$dalsi = "") {
-  $predat = array($_COOKIE["TestCookie"]);
-  
-  if($dalsi != "") {
-    $predat = array_merge((array)$predat,(array)$dalsi);
-  }
-  
-  
-  $request = xmlrpc_encode_request($metoda, $predat);
-  
-  $context = stream_context_create(array('http' => array(
-      'method' => "POST",
-      'header' => "Content-Type: text/xml",     
-      'content' => $request
-  )));
-    
-  $xmlOdpoved = file_get_contents("https://api.sklik.cz/RPC2", FILE_TEXT, $context);
-  $odpoved = xmlrpc_decode($xmlOdpoved);
-  
-  return $odpoved;
-}
+include ('funkce/volej.php');
+
+/* refresh cookie na dalších 13 dnù */
+$refreshSession = volej("client.getAttributes");
+setcookie ("Session", $refreshSession['session'], time() + 60*60*24*13);
 ?>
 <!DOCTYPE html> 
 <html> 
@@ -42,9 +26,3 @@ function volej($metoda,$dalsi = "") {
 </head> 
 
 <body>
-
- <!--
-<div data-role="header">
-	<h1>Sklik webapp</h1>
-	<a href="/sklik-webapp" data-icon="check" data-theme="b">Zpátky</a>
-</div> -->

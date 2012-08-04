@@ -16,7 +16,7 @@
 
 $apiUrl = "https://api.sklik.cz/RPC2";
 
-if(($_POST["name"] != "") and ($_POST["password"] != "")) {
+if(($_POST["name"] != "") or ($_POST["password"] != "")) {
 
   $params = array($_POST["name"],$_POST["password"]);
   
@@ -31,7 +31,8 @@ if(($_POST["name"] != "") and ($_POST["password"] != "")) {
   
   /* sledujeme response status - potom rozhodneme co dál */
   if ($response["status"] == "200") {
-    setcookie ("TestCookie", $response['session'], time() + 6000); 
+    setcookie ("LoginName", $_POST["name"], time()+60*60*24*365*10); 
+    setcookie ("Session", $response['session'], time() + 6000); 
     header('Location: welcome.php');
   } elseif($response["status"] == "401") {
     echo "<p>Špatná kombinace hesla a emailu</p>";

@@ -1,7 +1,19 @@
+<?php
+if(isset($_COOKIE["Session"])) {
+  include ('funkce/volej.php');
+  /* je uživatelův cookie stále platný? */
+  $sessionOk = volej("client.getAttributes");
+  if($sessionOk["status"] == "200") {
+    header('Location: welcome.php');
+  }
+}
+?>
+
+
 <!DOCTYPE html> 
 <html> 
 <head> 
-	<title>Page Title</title> 
+	<title>Sklik webapp</title> 
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" /> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
@@ -30,7 +42,10 @@
 		<div data-role="fieldcontain">
     <form data-ajax="false" action="setcookie.php" method="post">
       <label for="name">Přihlašovací jméno:</label>
-      <input type="text" name="name" id="name" value=""  />
+      <input type="text" name="name" id="name" value="<?php 
+        if(isset($_COOKIE["LoginName"])) {
+          echo $_COOKIE["LoginName"]; /* Zavolá poslední login */
+        } ?>"  />
       <br />
       <label for="password">Heslo:</label>
       <input type="password" name="password" id="password" value="" /><br />
