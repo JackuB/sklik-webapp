@@ -22,4 +22,21 @@ function volej($metoda,$dalsi = "") {
   return $odpoved;
 }
 
+function multivolej($metoda,$dalsi = "") {
+
+
+  $request = xmlrpc_encode_request($metoda, $dalsi);
+  
+  $context = stream_context_create(array('http' => array(
+      'method' => "POST",
+      'header' => "Content-Type: text/xml",     
+      'content' => $request
+  )));
+    
+  $xmlOdpoved = file_get_contents("https://api.sklik.cz/RPC2", FILE_TEXT, $context);
+  $odpoved = xmlrpc_decode($xmlOdpoved);
+  
+  return $odpoved;
+}
+
 ?>

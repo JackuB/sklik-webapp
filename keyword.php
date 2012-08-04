@@ -1,11 +1,11 @@
 <?php include ('inc/header.php') ?>
-<a data-transition="slidefade" href="welcome.php"><img src="img/back.png" /></a>
+<a data-transition="slidefade" href="adgroup.php?id=<?php echo $_GET["back"];?>"><img src="img/back.png" /></a>
 <img id="logout" src="img/logout.png" />
 <div id="header">
   
-    
-  
+ 
 </div>
+
 <div class="grafProkliku">
 <?php
 $i = 0;
@@ -27,7 +27,7 @@ do {
     $datumDo->timestamp = $datumDo;  
     
 $proklikyArray = array(intval($_GET["id"]),$datumOd,$datumDo);  
-$proklikyGraf = volej("campaign.stats",$proklikyArray);
+$proklikyGraf = volej("group.stats",$proklikyArray);
 
 array_push($grafProkliku, $proklikyGraf["stats"]["clicks"]);
   
@@ -50,7 +50,7 @@ echo '
 <div title="'.$den.'" class="sloupecGrafu"></div>
 </div>';
 $n++;
-}       
+}
 
 ?>
 </div>
@@ -60,49 +60,24 @@ $n++;
 
 
 <?php
-
-
-
- /* TODO multicall 
-    $paramArray = array(
-          array(
-             array(
-                   'methodName'   => 'listGroups',
-                   'params'      => array($_COOKIE["Session"],intval($_GET["id"]))
-                ),
-              array(
-                   'methodName'   => 'listGroups',
-                   'params'      => array($_COOKIE["Session"],intval($_GET["id"]))
-                )
-          )
-       );
-
-
-
-
-
-$multipass = multivolej("system.multicall",$paramArray);
-print_r($multipass);
-                         */
-
- 
-  $groups = volej("listGroups",intval($_GET["id"]));
-  
-    foreach ($groups["groups"] as $group) { 
-            
-      $id = $group["id"];
-      $vytvoreniGroup = $group["createDate"];
-      $nazevGroup = iconv("UTF-8", "WINDOWS-1250//TRANSLIT", $group["name"]); /* vážnì se group vrací v UTF8?! */    
-
+  $keywords = volej("listKeywords",intval($_GET["id"]));
+  // print_r($groups);
+    
+    foreach ($keywords["keywords"] as $keyword) {   
+      $id = $keyword["id"];
+      $vytvoreniKeyword = $keyword["createDate"];
+      $nazevKeyword = $keyword["name"];   
+      
       /* dnešní datum jako objekt */     
       $datumDo = new stdClass;
       $datumDo->scalar = date("c");
       $datumDo->xmlrpc_type = "datetime";
       $datumDo->timestamp = time();
-            
-      $statistikyArray = array($id,$vytvoreniGroup,$datumDo);
-      $statistiky = volej("group.stats",$statistikyArray);
-    
+
+      $statistikyArray = array($id,$vytvoreniKeyword,$datumDo);
+      $statistiky = volej("keyword.stats",$statistikyArray);
+      
+      
       if($statistiky["stats"]["clicks"] == "0") { 
         $ctr = "0"; $cpc = "0"; 
       } else {      
@@ -112,13 +87,14 @@ print_r($multipass);
       
       $cena = $statistiky["stats"]["money"]/100;                                            
       $prumernaPozice = $statistiky["stats"]["avgPosition"];
-      $status = $group["status"];
-
-      echo      
+      $status = $keyword["status"];
+               
+        echo      
         '<div class="kampan '.$status.'">
+          <a class="kampanLink otevritKeyword" href=""><span></span></a>
           <div class="inside">
-          <h2>'.$nazevGroup.'</h2>
-          <div class="kampanData">
+          <h2>'.$nazevKeyword.' <em>('.$statistiky["stats"]["clicks"].')</em></h2>
+          <div class="keywordsData kampanData">
           
             <div class="jednaTri">
               Prokliky
@@ -138,7 +114,7 @@ print_r($multipass);
            
             <div class="jednaTri">
               Prùmìrná pozice
-              <strong>'.$prumernaPozice.'</strong>
+              <strong>'.number_format($prumernaPozice,1,","," ").'</strong>
             </div>
             
             <div class="jednaTri">
@@ -155,11 +131,23 @@ print_r($multipass);
           
           </div>
           </div>
-          <a data-transition="slidefade" class="kampanLink" href="keyword.php?id='.$id.'&back='.$_GET["id"].'"><span></span></a>
+
         </div>';                         
-
-    };    
-
+      
+    };       
 ?>             
+
+
+<script>
+
+jQuery(document).ready(function(){
+    $(".otevritKeyword span").unbind("click").click( function() {
+      $(this).parent().next(".inside").children(".keywordsData").slideToggle("fast");
+    });
+});
+
+
+</script>
+
 
 <?php include ('inc/footer.php') ?>
