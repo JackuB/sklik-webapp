@@ -121,6 +121,19 @@ body {
 	background: url('../img/download.png') no-repeat 100% -10px;
 	margin-left: -20px
 }
+
+.grafMax {width:90%;float:right;position:relative;top:-19px;color:#ccc;padding-right:10px;text-align:right;}
+.grafProkliku {border-top:1px dashed #ccc;}
+
+
+
+
+
+
+
+
+
+
 #background {
 	position: absolute;
 	height: 200%;
@@ -146,15 +159,15 @@ body {
 	-moz-animation:    slidefromtop2 45s infinite;
 	-ms-animation:     slidefromtop2 45s infinite;
 	-o-animation:      slidefromtop2 45s infinite;
-}
+}       
 .loadingLogo {
 	position: absolute;
 	z-index: 100;
 	left: 50%;
-	margin-left: -100px;
+	margin-left: -115px;
 	top: 50%;
-	margin-top: -48px;
-	width: 200px;
+	margin-top: -91px;
+	width: 229px;
 }
 .fixed {
 	position: fixed;

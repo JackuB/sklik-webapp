@@ -1,6 +1,6 @@
 <?php include ('inc/header.php') ?>
 <a data-transition="slidefade" href="welcome.php"><img src="img/back.png" /></a>
-<img id="logout" src="img/logout.png" />
+<a href="logout.php"><img id="logout" src="img/logout.png" /></a>
 <div id="header">
   
 <?php
@@ -59,6 +59,7 @@ echo '
 $n++;
 }       
 
+echo '<div class="grafMax">'.$grafProklikuMax.'</div>';
 
 /* KONEC VYKRESLENÍ GRAFU */
 ?>

@@ -1,6 +1,6 @@
 <?php include ('inc/header.php') ?>
 <a data-transition="slidefade" href="adgroup.php?id=<?php echo $_GET["back"];?>"><img src="img/back.png" /></a>
-<img id="logout" src="img/logout.png" />
+<a href="logout.php"><img id="logout" src="img/logout.png" /></a>
 <div id="header">
   
  
@@ -51,7 +51,7 @@ echo '
 </div>';
 $n++;
 }
-
+echo '<div class="grafMax">'.$grafProklikuMax.'</div>';
 ?>
 </div>
 
@@ -66,7 +66,12 @@ $n++;
     foreach ($keywords["keywords"] as $keyword) {   
       $id = $keyword["id"];
       $vytvoreniKeyword = $keyword["createDate"];
-      $nazevKeyword = $keyword["name"];   
+      
+      if(mb_detect_encoding($keyword["name"], 'UTF-8', true) == "UTF-8") { /* OBÈAS se keyword vrací jako UTF-8 - ale zbytek stránky je windows-1250 - WTF */
+        $nazevKeyword = iconv("UTF-8", "WINDOWS-1250//TRANSLIT", $keyword["name"]);     
+      } else {
+        $nazevKeyword = $keyword["name"];
+      }   
       
       /* dnešní datum jako objekt */     
       $datumDo = new stdClass;

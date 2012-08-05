@@ -2,7 +2,7 @@
 if(isset($_COOKIE["Session"])) {
   include ('funkce/volej.php');
   /* je uživatelùv cookie stále platný? */
-  $sessionOk = volej("client.getAttributes");
+  $sessionOk = volej("client.getAttributes");  
   if($sessionOk["status"] == "200") {
     header('Location: welcome.php');
   }
