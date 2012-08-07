@@ -17,7 +17,7 @@ setcookie ("Session", $refreshSession['session'], time() + 60*60*24*13);
 	<title>Sklik Mobile</title> 
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-
+  <meta name="apple-mobile-web-app-capable" content="yes" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
   <link rel="stylesheet" href="css/style.css" />
   

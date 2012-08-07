@@ -1,5 +1,5 @@
 <?php include ('inc/header.php') ?>
-<a data-transition="slidefade" href="welcome.php"><img src="img/back.png" /></a>
+<a data-transition="fade" href="welcome.php"><img src="img/back.png" /></a>
 <a href="logout.php"><img id="logout" src="img/logout.png" /></a>
 <div id="header">
   
@@ -10,7 +10,7 @@
   
 </div>
 
-<h3 class="desetleva">Prokliky za posledních 7 dnù</h3>
+<h3 class="desetleva magenta">Prokliky za posledních 7 dnù</h3>
 <div class="grafProkliku">
 <?php
 /* VYKRESLENÍ GRAFU */
@@ -127,7 +127,7 @@ print_r($multipass);
       echo      
         '<div class="kampan '.$status.'">
           <div class="inside">
-          <h2>'.$nazevGroup.'</h2>
+          <h3>'.$nazevGroup.'</h3>
           <div class="kampanData">
           
             <div class="jednaTri">
@@ -165,11 +165,17 @@ print_r($multipass);
           
           </div>
           </div>
-          <a data-transition="slidefade" class="kampanLink" href="keyword.php?id='.$id.'&back='.$_GET["id"].'"><span></span></a>
+          <a data-transition="fade" class="kampanLink" href="keyword.php?id='.$id.'&back='.$_GET["id"].'"><span></span></a>
         </div>';                         
 
     };    
 
 ?>             
+
+<script>
+$(document).delegate('.ui-page', 'pageshow', function () {
+    $(".grafProkliku").fadeIn("slow");
+});
+</script>
 
 <?php include ('inc/footer.php') ?>

@@ -91,7 +91,7 @@
           
           </div>
           </div>
-          <a data-transition="slidefade" class="kampanLink" href="adgroup.php?id='.$id.'"><span></span></a>
+          <a data-transition="fade" class="kampanLink" href="adgroup.php?id='.$id.'"><span></span></a>
         </div>';                         
       
     };

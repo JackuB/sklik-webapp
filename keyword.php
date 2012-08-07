@@ -1,10 +1,20 @@
 <?php include ('inc/header.php') ?>
-<a data-transition="slidefade" href="adgroup.php?id=<?php echo $_GET["back"];?>"><img src="img/back.png" /></a>
+<a data-transition="fade" href="adgroup.php?id=<?php echo $_GET["back"];?>"><img src="img/back.png" /></a>
 <a href="logout.php"><img id="logout" src="img/logout.png" /></a>
 <div id="header">
   
- 
+<?php
+ $nazevKamapane = volej("campaign.getAttributes",intval($_GET["back"]));
+ echo "<h2>".$nazevKamapane["campaign"]["name"]."</h2>";
+?>   
+<?php
+ $nazevgroup = volej("group.getAttributes",intval($_GET["id"]));
+ echo "<h2 class=\"lime\">".$nazevgroup["group"]["name"]."</h2>";
+?>    
+  
 </div>
+
+<h3 class="desetleva magenta">Prokliky za posledních 7 dnù</h3>
 
 <div class="grafProkliku">
 <?php
@@ -98,7 +108,7 @@ echo '<div class="grafMax">'.$grafProklikuMax.'</div>';
         '<div class="kampan '.$status.'">
           <a class="kampanLink otevritKeyword" href=""><span></span></a>
           <div class="inside">
-          <h2>'.$nazevKeyword.' <em>('.$statistiky["stats"]["clicks"].')</em></h2>
+          <h3>'.$nazevKeyword.' ('.$statistiky["stats"]["clicks"].')</h3>
           <div class="keywordsData kampanData">
           
             <div class="jednaTri">

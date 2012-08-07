@@ -1,0 +1,21 @@
+body, .ui-body-c, .ui-overlay-c {	
+  background: #58c03c;
+  color:white;
+  text-shadow:none;
+  }
+  
+  
+  
+#wrap {
+      max-width:600px;
+      width:80%;
+      margin:0 auto;
+     }  
+     
+input.ui-input-text, textarea.ui-input-text, .ui-btn{
+border-radius:0;
+background:white;
+border:1px solid #e7ffe0;
+color:black;
+
+}
