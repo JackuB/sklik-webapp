@@ -1,15 +1,15 @@
 <?php include ('inc/header.php') ?>
-<a data-transition="fade" href="adgroup.php?id=<?php echo $_GET["back"];?>"><img src="img/back.png" /></a>
+<a href="adgroup.php?id=<?php echo $_GET["back"];?>"><img src="img/back.png" /></a>
 <a href="logout.php"><img id="logout" src="img/logout.png" /></a>
 <div id="header">
   
 <?php
  $nazevKamapane = volej("campaign.getAttributes",intval($_GET["back"]));
- echo "<h2>".$nazevKamapane["campaign"]["name"]."</h2>";
+ echo '<h2><a href="adgroup.php?id='.$_GET["back"].'">'.$nazevKamapane["campaign"]["name"].'</a></h2>';
 ?>   
 <?php
  $nazevgroup = volej("group.getAttributes",intval($_GET["id"]));
- echo "<h2 class=\"lime\">".$nazevgroup["group"]["name"]."</h2>";
+ echo "<h2 class=\"lime\">&#8618; ".$nazevgroup["group"]["name"]."</h2>";
 ?>    
   
 </div>
@@ -55,10 +55,17 @@ if ($den != 0) {
 $hodnota = $den/$grafProklikuMax*100;
 } else {
 $hodnota = 5; }
-echo '
-<div class="wrapSloupce" style="left:'.$left.'%;width:'.$leftProcento.'%;height:'.$hodnota.'%">
-<div title="'.$den.'" class="sloupecGrafu"></div>
-</div>';
+if ($hodnota < 10) {
+  echo '
+  <div class="wrapSloupce" style="left:'.$left.'%;width:'.$leftProcento.'%;height:'.$hodnota.'%">
+  <div title="'.$den.'" class="sloupecGrafu"></div>
+  </div>';
+} else {
+  echo '
+  <div class="wrapSloupce" style="left:'.$left.'%;width:'.$leftProcento.'%;height:'.$hodnota.'%">
+  <div title="'.$den.'" class="sloupecGrafu">'.$den.'</div>
+  </div>';
+}
 $n++;
 }
 echo '<div class="grafMax">'.$grafProklikuMax.'</div>';

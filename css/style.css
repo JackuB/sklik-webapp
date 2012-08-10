@@ -113,7 +113,10 @@ body {
 .grafProkliku .wrapSloupce .sloupecGrafu {
 	width: 90%;
 	height: 100%;
-	background: #329fd7
+	background: #329fd7;
+  text-align:center;
+  text-shadow:none;
+  color:white;
 }
 .keywordsData {
 	display: none;
@@ -244,6 +247,11 @@ h1 {
 h2 {
 	font-size: 30px
 }
+h2 a {
+     color: #333333!important;
+     text-decoration:none!important;
+     font-weight:100!important;
+     }
 h3 {
 	font-size: 20px
 }

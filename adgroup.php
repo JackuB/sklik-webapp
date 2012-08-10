@@ -1,5 +1,5 @@
 <?php include ('inc/header.php') ?>
-<a data-transition="fade" href="welcome.php"><img src="img/back.png" /></a>
+<a href="welcome.php"><img src="img/back.png" /></a>
 <a href="logout.php"><img id="logout" src="img/logout.png" /></a>
 <div id="header">
   
@@ -52,10 +52,17 @@ if ($den != 0) {
 $hodnota = $den/$grafProklikuMax*100;
 } else {
 $hodnota = 5; }
-echo '
-<div class="wrapSloupce" style="left:'.$left.'%;width:'.$leftProcento.'%;height:'.$hodnota.'%">
-<div title="'.$den.'" class="sloupecGrafu"></div>
-</div>';
+if ($hodnota < 10) {
+  echo '
+  <div class="wrapSloupce" style="left:'.$left.'%;width:'.$leftProcento.'%;height:'.$hodnota.'%">
+  <div title="'.$den.'" class="sloupecGrafu"></div>
+  </div>';
+} else {
+  echo '
+  <div class="wrapSloupce" style="left:'.$left.'%;width:'.$leftProcento.'%;height:'.$hodnota.'%">
+  <div title="'.$den.'" class="sloupecGrafu">'.$den.'</div>
+  </div>';
+}
 $n++;
 }       
 
@@ -165,7 +172,7 @@ print_r($multipass);
           
           </div>
           </div>
-          <a data-transition="fade" class="kampanLink" href="keyword.php?id='.$id.'&back='.$_GET["id"].'"><span></span></a>
+          <a class="kampanLink" href="keyword.php?id='.$id.'&back='.$_GET["id"].'"><span></span></a>
         </div>';                         
 
     };    
