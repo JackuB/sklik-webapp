@@ -41,7 +41,7 @@ $( document ).bind( 'mobileinit', function(){
         if($_GET["error"] == "empty") { echo "<p>Musíte vyplnit jméno i heslo</p>"; } 
       }
     ?>
-    <h1>Pøihlášení</h1>
+    <!--<h1>Pøihlášení</h1>--§
 		<!-- form -->
 		<div data-role="fieldcontain">
     <form data-ajax="false" action="setcookie.php" method="post">

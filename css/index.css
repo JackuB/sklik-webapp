@@ -1,7 +1,8 @@
 body, .ui-body-c, .ui-overlay-c {	
-  background: #58c03c;
+  background:url('../img/logo.png') no-repeat center 10px, url('../img/background.jpg') #644dc8;
   color:white;
   text-shadow:none;
+  padding-top:180px;
   }
   
   
