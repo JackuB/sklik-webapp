@@ -1,0 +1,436 @@
+/* CSS Mobile Reset */
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+body {
+	font-family: Arial, sans-serif;
+	line-height: 1.5;
+	font-size: 16px;
+	background: #fff;
+	padding: 0;
+	margin: 0;
+	color: #000;
+	word-wrap: break-word;
+	-webkit-text-size-adjust: none;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 700;
+}
+p img {
+	float: left;
+	margin: 0 10px 5px 0;
+	padding: 0;
+}
+img {
+	border: 0;
+	max-width: 100%;
+}
+table {
+	width: auto;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+body {
+	background: #ebebeb;
+}
+.clear {
+	visibility: none;
+	clear: both;
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 0;
+}
+.kampan {
+	background: white;
+	position: relative;
+}
+.kampan .inside {
+	border-right: 10px solid #7cc576;
+	padding: 10px 0 10px 10px;
+	margin-top: 10px
+}
+.suspend {
+	opacity: 0.7;
+}
+.suspend .inside {
+	border-right: 10px solid #c5c5c5;
+}
+.kampan .inside h2 {
+	margin: 0;
+	padding-right: 45px;
+}
+.kampan .inside h2 em {
+	color: #ccc;
+	font-weight: 400;
+}
+.kampan .inside .jednaTri {
+	width: 33%;
+	float: left;
+	color: #959595;
+	font-size: 10px;
+	margin-top: 10px
+}
+.kampan .inside .jednaTri strong {
+	clear: both;
+	display: block;
+	color: #444;
+	font-size: 20px
+}
+#header {
+	padding: 0 10px
+}
+#logout {
+	position: absolute;
+	top: 10px;
+	right: 10px
+}
+.kampanLink span {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+.grafProkliku {
+	height: 150px;
+	width: 100%;
+	position: relative;
+  z-index:0;
+}
+.desetleva {
+	padding-left: 10px;
+}
+.grafProkliku .wrapSloupce {
+	position: absolute;
+	bottom: 0;
+	margin-right: 5px;
+	float: left;
+}
+.grafProkliku .wrapSloupce .sloupecGrafu {
+	width: 90%;
+	height: 100%;
+	background: #329fd7;
+  text-align:center;
+  text-shadow:none;
+  color:white;
+}
+.keywordsData {
+	display: none;
+}
+.otevritKeyword span {
+	background: url('../img/ikony/otevrit.png') no-repeat 100% -10px;
+	margin-left: -20px
+}
+
+.grafMax {width:90%;float:right;position:relative;top:-19px;color:#ccc;padding-right:10px;text-align:right;}
+.grafProkliku {border-top:1px dashed #ccc;}
+
+
+
+
+
+
+
+.accent {
+	color: #8cbf26
+}
+.white {
+	color: #fff
+}
+.black {
+	color: #000
+}
+.blue {
+	color: #1ba1e2
+}
+.brown {
+	color: #a05000
+}
+.green {
+	color: #393
+}
+.lime {
+	color: #8cbf26
+}
+.magenta {
+	color: #ff0097
+}
+.orange {
+	color: #f09609
+}
+.pink {
+	color: #e671b8
+}
+.purple {
+	color: #a200ff
+}
+.red {
+	color: #e51400
+}
+.teal {
+	color: #00aba9
+}
+.whitebg {
+	background-color: #fff
+}
+.blackbg {
+	background-color: #000
+}
+.bluebg {
+	background-color: #1ba1e2
+}
+.brownbg {
+	background-color: #a05000
+}
+.greenbg {
+	background-color: #393
+}
+.limebg {
+	background-color: #8cbf26
+}
+.magentabg {
+	background-color: #ff0097
+}
+.orangebg {
+	background-color: #f09609
+}
+.pinkbg {
+	background-color: #e671b8
+}
+.purplebg {
+	background-color: #a200ff
+}
+.redbg {
+	background-color: #e51400
+}
+.tealbg {
+	background-color: #00aba9
+}
+@font-face {
+	font-family: 'RobotoRegular';
+	src: url('../fonts/Roboto-Regular-webfont.eot');
+	src: url('../fonts/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Roboto-Regular-webfont.woff') format('woff'), url('../fonts/Roboto-Regular-webfont.ttf') format('truetype'), url('../fonts/Roboto-Regular-webfont.svg#RobotoRegular') format('svg');
+	font-weight: normal;
+	font-style: normal
+}
+@font-face {
+	font-family: 'RobotoLight';
+	src: url('../fonts/Roboto-Light-webfont.eot');
+	src: url('../fonts/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Roboto-Light-webfont.woff') format('woff'), url('../fonts/Roboto-Light-webfont.ttf') format('truetype'), url('../fonts/Roboto-Light-webfont.svg#RobotoLight') format('svg');
+	font-weight: normal;
+	font-style: normal
+}
+#headingstyles {
+	font-family: "Segoe UI Light", "Helvetica Neue", 'RobotoLight', "Segoe UI", "Segoe WP", sans-serif;
+	font-weight: 100;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	text-transform: lowercase
+}
+body {
+	font-family: "Segoe UI", "Segoe WP", "Helvetica Neue", 'RobotoRegular', sans-serif;
+	font-size: 14px
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Segoe UI Light", "Helvetica Neue", 'RobotoLight', "Segoe UI", "Segoe WP", sans-serif;
+	font-weight: 100;
+	margin-top: -5px;
+	margin-bottom: 0px;
+}
+h1 {
+	font-size: 38px
+}
+h2 {
+	font-size: 30px
+}
+h2 a {
+     color: #333333!important;
+     text-decoration:none!important;
+     font-weight:100!important;
+     }
+h3 {
+	font-size: 20px
+}
+h4, h5, h6 {
+	font-weight: normal;
+	text-transform: uppercase
+}
+
+
+#background {
+	position: absolute;
+	height: 200%;
+	width: 100%;
+	background: #e70a0a;
+}
+#prvni {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: #66f1cb;
+	-webkit-animation: slidefromtop 70s infinite;
+	-moz-animation:    slidefromtop 70s infinite;
+	-ms-animation:     slidefromtop 70s infinite;
+	-o-animation:      slidefromtop 70s infinite;
+}
+#druhy {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: #00bff3;
+	-webkit-animation: slidefromtop2 45s infinite;
+	-moz-animation:    slidefromtop2 45s infinite;
+	-ms-animation:     slidefromtop2 45s infinite;
+	-o-animation:      slidefromtop2 45s infinite;
+}       
+.loadingLogo {
+	position: absolute;
+	z-index: 100;
+	left: 50%;
+	margin-left: -115px;
+	top: 50%;
+	margin-top: -91px;
+	width: 229px;
+}
+.fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+.ui-loader-verbose {opacity:1}
+
+/* Prefixy? Ano, máme prefixy */
+@-webkit-keyframes slidefromtop{0%{height:0%;}
+5%{height:100%;}
+10%{height:0%;background:b7f300;}
+15%{height:100%;}
+20%{height:0%;}
+25%{height:100%;}
+30%{height:0%;}
+45%{height:100%;background:yellow;}
+50%{height:0%;}
+55%{height:100%;}
+60%{height:0%;background:#6149c9}
+65%{height:100%;}
+70%{height:0%;}
+75%{height:100%;}
+80%{height:0%;}
+85%{height:100%;}
+90%{height:0%;}
+95%{height:100%;}
+100%{height:0%;}
+}
+@-webkit-keyframes slidefromtop2{0%{height:0%;}
+10%{height:100%;top:100%;}
+20%{height:0%;}
+30%{height:100%;}
+40%{height:0%;background:#6df166;top:0;}
+50%{height:100%;}
+60%{height:0%;}
+70%{height:100%;}
+80%{height:0%;}
+90%{height:100%;}
+100%{height:0%;}
+}
+@-moz-keyframes slidefromtop{0%{height:0%;}
+5%{height:100%;}
+10%{height:0%;background:b7f300;}
+15%{height:100%;}
+20%{height:0%;}
+25%{height:100%;}
+30%{height:0%;}
+45%{height:100%;background:yellow;}
+50%{height:0%;}
+55%{height:100%;}
+60%{height:0%;background:#6149c9}
+65%{height:100%;}
+70%{height:0%;}
+75%{height:100%;}
+80%{height:0%;}
+85%{height:100%;}
+90%{height:0%;}
+95%{height:100%;}
+100%{height:0%;}
+}
+@-moz-keyframes slidefromtop2{0%{height:0%;}
+10%{height:100%;top:100%;}
+20%{height:0%;}
+30%{height:100%;}
+40%{height:0%;background:#6df166;top:0;}
+50%{height:100%;}
+60%{height:0%;}
+70%{height:100%;}
+80%{height:0%;}
+90%{height:100%;}
+100%{height:0%;}
+}
+@-ms-keyframes slidefromtop{0%{height:0%;}
+5%{height:100%;}
+10%{height:0%;background:b7f300;}
+15%{height:100%;}
+20%{height:0%;}
+25%{height:100%;}
+30%{height:0%;}
+45%{height:100%;background:yellow;}
+50%{height:0%;}
+55%{height:100%;}
+60%{height:0%;background:#6149c9}
+65%{height:100%;}
+70%{height:0%;}
+75%{height:100%;}
+80%{height:0%;}
+85%{height:100%;}
+90%{height:0%;}
+95%{height:100%;}
+100%{height:0%;}
+}
+@-ms-keyframes slidefromtop2{0%{height:0%;}
+10%{height:100%;top:100%;}
+20%{height:0%;}
+30%{height:100%;}
+40%{height:0%;background:#6df166;top:0;}
+50%{height:100%;}
+60%{height:0%;}
+70%{height:100%;}
+80%{height:0%;}
+90%{height:100%;}
+100%{height:0%;}
+}
+@-o-keyframes slidefromtop{0%{height:0%;}
+5%{height:100%;}
+10%{height:0%;background:b7f300;}
+15%{height:100%;}
+20%{height:0%;}
+25%{height:100%;}
+30%{height:0%;}
+45%{height:100%;background:yellow;}
+50%{height:0%;}
+55%{height:100%;}
+60%{height:0%;background:#6149c9}
+65%{height:100%;}
+70%{height:0%;}
+75%{height:100%;}
+80%{height:0%;}
+85%{height:100%;}
+90%{height:0%;}
+95%{height:100%;}
+100%{height:0%;}
+}
+@-o-keyframes slidefromtop2{0%{height:0%;}
+10%{height:100%;top:100%;}
+20%{height:0%;}
+30%{height:100%;}
+40%{height:0%;background:#6df166;top:0;}
+50%{height:100%;}
+60%{height:0%;}
+70%{height:100%;}
+80%{height:0%;}
+90%{height:100%;}
+100%{height:0%;}
+}
