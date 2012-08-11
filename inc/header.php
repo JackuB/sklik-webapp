@@ -1,9 +1,11 @@
 <?php
 /* uživatele bez cookie přesměrovat na login */
-if(!isset($_COOKIE["Session"])) {
+if(isset($_COOKIE["Session"])) {} else {
   header('Location: index.php');
   die;
 }
+
+include ('inc/config.php');
 
 include ('funkce/volej.php');
 
@@ -14,7 +16,7 @@ setcookie ("Session", $refreshSession['session'], time() + 60*60*24*13);
 <!DOCTYPE html> 
 <html> 
 <head> 
-	<title>Sklik Mobile</title> 
+	<title>Mobyklik</title> 
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
   <meta name="apple-mobile-web-app-capable" content="yes" />
