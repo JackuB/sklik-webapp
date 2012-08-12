@@ -9,7 +9,8 @@ if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone")) {
   <title>Mobyklik - mobilní rozhraní pro Sklik.cz</title> 
   <meta name="keywords" content="sklik,iphone,ios,ipad,mobilní aplikace,mobilní reklamy,seznam,seznam.cz,mobilní sklik">
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/index.css" />    
+  <link rel="stylesheet" href="css/index.css" />
+  <?php include ('google.inc'); ?>    
 </head> 
 
 <body> 

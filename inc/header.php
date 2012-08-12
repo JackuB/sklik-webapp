@@ -36,6 +36,7 @@ time() + 60*60*24*13);
   </script>
 	<script src="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.js"></script>
   <script src="js/scripts.js"></script>
+  <?php include ('google.inc'); ?>
 </head> 
 
 <body>

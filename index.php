@@ -44,7 +44,8 @@ if(isset($_COOKIE["Session"])) {
   
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/index.css" />    
+  <link rel="stylesheet" href="css/index.css" />
+  <?php include ('google.inc'); ?>    
 </head> 
 
 <body> 
@@ -91,7 +92,5 @@ if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone")) {
 
 		
 	</div><!-- /content -->
-
-
 </body>
 </html>
