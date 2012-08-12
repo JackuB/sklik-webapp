@@ -68,7 +68,6 @@ if ($hodnota < 10) {
 }
 $n++;
 }
-echo '<div class="grafMax">'.$grafProklikuMax.'</div>';
 ?>
 </div>
 

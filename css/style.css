@@ -125,18 +125,6 @@ body {
 	background: url('../img/ikony/otevrit.png') no-repeat 100% -10px;
 	margin-left: -20px
 }
-.grafMax {
-	width: 90%;
-	float: right;
-	position: relative;
-	top: -19px;
-	color: #ccc;
-	padding-right: 10px;
-	text-align: right;
-}
-.grafProkliku {
-	border-top: 1px dashed #ccc;
-}
 .accent {
 	color: #8cbf26
 }
