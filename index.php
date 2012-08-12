@@ -22,6 +22,7 @@ if(isset($_COOKIE["Session"])) {
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         
     <link rel="apple-touch-icon-precomposed" href="img/webapp/apple-touch-icon-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/webapp/apple-touch-icon-precomposed-iphone4.png" />
 
     <link rel="apple-touch-startup-image" media="(max-device-width: 480px) and not (-webkit-min-device-pixel-ratio: 2)" href="img/webapp/loading-small.png" />
     <link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="img/webapp/loading.png" />    
@@ -78,7 +79,7 @@ if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone")) {
     </div>	
     
 <?php    
-       }
+      }
 }else{
    echo('<br /><h3>Je mi líto, ale iOS je zatím jediná otestovaná platforma. Co je v plánu? Sledujte <a style="color:white;font-weight:700" href="'.$CwebUrl.'">web Mobykliku</a>.</h3>');
 }

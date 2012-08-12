@@ -1,17 +1,3 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-	<title>Chybová stránka</title> 
-	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" /> 
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
-	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
-</head> 
-<body> 
-<h1>Něco se nepovedlo</h1>
-
 <?php
 
 $apiUrl = "https://api.sklik.cz/RPC2";
@@ -60,13 +46,13 @@ $response = xmlrpc_decode($file);
     setcookie ("Session", $response['session'], time() + 6000); 
     header('Location: welcome.php');
   } elseif($response["status"] == "401") {
-    echo "<p>Špatná kombinace hesla a emailu</p>";
+    $msg = "<p>Špatná kombinace hesla a emailu</p>";
   } elseif($response["status"] == "500") {
-    echo "<p>Chyba serveru</p>";
+    $msg = "<p>Chyba serveru</p>";
   } elseif($response["status"] == "") {
-    echo "<p>Server vrátil prázdnou odezvu.</p>";
+    $msg = "<p>Server vrátil prázdnou odezvu.</p>";
   } else {
-    echo "<p>Jiná chyba</p>";
+    $msg = "<p>Jiná chyba</p>";
   }
 
 } else { 
@@ -75,6 +61,29 @@ $response = xmlrpc_decode($file);
 } 
 
 ?>
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <title>Mobyklik</title> 
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
 
+
+    <!-- mobilní meta tagy -->
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />    
+    <!-- /mobilní meta tagy -->
+  
+	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.js"></script>
+  <script src="js/add2home.js"></script>
+  
+  
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/index.css" />    
+</head> 
+<body>
+<h1>Něco se nepovedlo</h1>
+<h2><?php echo $msg; ?></h2>
+<h3><a href="index.php" rel="external">Zpět</a>
 </body>
 </html>

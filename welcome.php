@@ -13,7 +13,7 @@
     ?>    
     </div>
 
-  <a href="logout.php"><img id="logout" src="img/logout.png" /></a>
+  <a href="logout.php" rel="external"><img id="logout" src="img/logout.png" /></a>
 </div>
 
 <?php

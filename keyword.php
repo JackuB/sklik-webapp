@@ -1,6 +1,6 @@
 <?php include ('inc/header.php') ?>
 <a href="adgroup.php?id=<?php echo $_GET["back"];?>"><img src="img/back.png" /></a>
-<a href="logout.php"><img id="logout" src="img/logout.png" /></a>
+<a href="logout.php" rel="external"><img id="logout" src="img/logout.png" /></a>
 <div id="header">
   
 <?php

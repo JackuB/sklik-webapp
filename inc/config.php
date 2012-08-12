@@ -2,6 +2,6 @@
  /* CONFIG soubor */
 
 
- $CwebUrl = "javascript:;"
+ $CwebUrl = "http://mobyklik.jedenbod.cz/";
 
 ?>
