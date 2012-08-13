@@ -1,5 +1,5 @@
 <?php 
-if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone")) {
+if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone") or strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"ipad")) {
     header('Location: app/');
 }else{ ?>
 <!DOCTYPE html> 

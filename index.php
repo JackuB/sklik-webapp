@@ -53,7 +53,7 @@ if(isset($_COOKIE["Session"])) {
 	<div id="wrap">
   
   <?
-if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone")) {
+if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone") or strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"ipad")) {
    if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"safari")) {
       echo('<br /><h3>Mobyklik si musíte nejdøíve nainstalovat.</h3>');
    }else{ ?>
