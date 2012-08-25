@@ -5,5 +5,6 @@
     <h4>O aplikaci</h4>
   </a>
 </div>
+</div>
 </body>
 </html>

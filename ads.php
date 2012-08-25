@@ -1,20 +1,23 @@
 <?php include ('inc/header.php') ?>
-<a href="welcome.php"><img src="img/back.png" /></a>
+<a href="adgroup.php?id=<?php echo $_GET["back"];?>"><img src="img/back.png" /></a>
 <a href="logout.php" rel="external"><img id="logout" src="img/logout.png" /></a>
 <div id="header">
   
 <?php
- $nazevKamapane = volej("campaign.getAttributes",intval($_GET["id"]));
- echo "<h2>".$nazevKamapane["campaign"]["name"]."</h2>";
+ $nazevKamapane = volej("campaign.getAttributes",intval($_GET["back"]));
+ echo '<h2><a href="adgroup.php?id='.$_GET["back"].'">'.$nazevKamapane["campaign"]["name"].'</a></h2>';
+?>   
+<?php
+ $nazevgroup = volej("group.getAttributes",intval($_GET["id"]));
+ echo "<h2 class=\"lime\">&#8618; ".$nazevgroup["group"]["name"]."</h2>";
 ?>    
   
 </div>
 
 <h3 class="desetleva magenta">Prokliky za posledních 7 dnù</h3>
+
 <div class="grafProkliku">
 <?php
-/* VYKRESLENÍ GRAFU */
-
 $i = 0;
 $grafProkliku = array();
 do {
@@ -34,7 +37,7 @@ do {
     $datumDo->timestamp = $datumDo;  
     
 $proklikyArray = array(intval($_GET["id"]),$datumOd,$datumDo);  
-$proklikyGraf = volej("campaign.stats",$proklikyArray);
+$proklikyGraf = volej("group.stats",$proklikyArray);
 
 array_push($grafProkliku, $proklikyGraf["stats"]["clicks"]);
   
@@ -64,59 +67,41 @@ if ($hodnota < 15) {
   </div>';
 }
 $n++;
-}       
-/* KONEC VYKRESLENÍ GRAFU */
+}
 ?>
 </div>
 
 
-
-
-
-<?php
-/* TODO multicall 
-    $paramArray = array(
-          array(
-             array(
-                   'methodName'   => 'listGroups',
-                   'params'      => array($_COOKIE["Session"],intval($_GET["id"]))
-                ),
-              array(
-                   'methodName'   => 'listGroups',
-                   'params'      => array($_COOKIE["Session"],intval($_GET["id"]))
-                )
-          )
-       );
-
-$multipass = multivolej("system.multicall",$paramArray);
-print_r($multipass);
-*/
-?>
+<div class="buttonWrap activeads">
+<a href="keyword.php?id=<?php echo $_GET["id"] ?>&back=<?php echo $_GET["back"];?>" class="button keybutton">Klíèová slova</a>
+<a href="javascript:;" class="button activeads">Reklamy</a>
+</div>
 
 
 <?php
-  /* VÝPIS */
-  $groups = volej("listGroups",intval($_GET["id"]));
-  
-    foreach ($groups["groups"] as $group) { 
-            
-      $id = $group["id"];
-      $vytvoreniGroup = $group["createDate"];
-      if(mb_detect_encoding($group["name"], 'UTF-8', true) == "UTF-8") { /* OBÈAS se group vrací jako UTF-8 - ale zbytek stránky je windows-1250 - WTF */
-        $nazevGroup = iconv("UTF-8", "WINDOWS-1250//TRANSLIT", $group["name"]);     
+  $ads = volej("listAds",intval($_GET["id"]));
+  // print_r($groups);
+    
+    foreach ($ads["ads"] as $ad) {   
+      $id = $ad["id"];
+      $vytvoreniAd = $ad["createDate"];
+      
+      if(mb_detect_encoding($ad["creative1"], 'UTF-8', true) == "UTF-8") { /* OBÈAS se keyword vrací jako UTF-8 - ale zbytek stránky je windows-1250 - WTF */
+        $nazevAd = iconv("UTF-8", "WINDOWS-1250//TRANSLIT", $ad["creative1"]);     
       } else {
-        $nazevGroup = $group["name"];
-      }
-
+        $nazevAd = $ad["creative1"];
+      }   
+      
       /* dnešní datum jako objekt */     
       $datumDo = new stdClass;
       $datumDo->scalar = date("c");
       $datumDo->xmlrpc_type = "datetime";
       $datumDo->timestamp = time();
-            
-      $statistikyArray = array($id,$vytvoreniGroup,$datumDo);
-      $statistiky = volej("group.stats",$statistikyArray);
-    
+
+      $statistikyArray = array($id,$vytvoreniAd,$datumDo);
+      $statistiky = volej("ad.stats",$statistikyArray);
+      
+      
       if($statistiky["stats"]["clicks"] == "0") { 
         $ctr = "0"; $cpc = "0"; 
       } else {      
@@ -126,13 +111,14 @@ print_r($multipass);
       
       $cena = $statistiky["stats"]["money"]/100;                                            
       $prumernaPozice = $statistiky["stats"]["avgPosition"];
-      $status = $group["status"];
-
-      echo      
+      $status = $ad["status"];
+               
+        echo      
         '<div class="kampan '.$status.'">
+          <a class="kampanLink otevritKeyword" href=""><span></span></a>
           <div class="inside">
-          <h3>'.$nazevGroup.'</h3>
-          <div class="kampanData">
+          <h3>'.$nazevAd.' ('.$statistiky["stats"]["clicks"].')</h3>
+          <div class="keywordsData kampanData">
           
             <div class="jednaTri">
               Prokliky
@@ -152,7 +138,7 @@ print_r($multipass);
            
             <div class="jednaTri">
               Prùmìrná pozice
-              <strong>'.$prumernaPozice.'</strong>
+              <strong>'.number_format($prumernaPozice,1,","," ").'</strong>
             </div>
             
             <div class="jednaTri">
@@ -169,17 +155,23 @@ print_r($multipass);
           
           </div>
           </div>
-          <a class="kampanLink" href="keyword.php?id='.$id.'&back='.$_GET["id"].'"><span></span></a>
+
         </div>';                         
-
-    };    
-
+      
+    };       
 ?>             
 
+
 <script>
-$(document).delegate('.ui-page', 'pageshow', function () {
-    $(".grafProkliku").fadeIn("slow");
+
+jQuery(document).ready(function(){
+    $(".otevritKeyword span").unbind("click").click( function() {
+      $(this).parent().next(".inside").children(".keywordsData").slideToggle("fast");
+    });
 });
+
+
 </script>
+
 
 <?php include ('inc/footer.php') ?>

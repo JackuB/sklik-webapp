@@ -25,6 +25,8 @@ time() + 60*60*24*13);
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
   <link rel="stylesheet" href="css/style.css" />
   
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  
 	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
   <script type="text/javascript">
     $( document ).bind( 'mobileinit', function(){
@@ -40,3 +42,4 @@ time() + 60*60*24*13);
 </head> 
 
 <body>
+<div id="wrap"><!-- it's a wrap! -->

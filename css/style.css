@@ -8,13 +8,14 @@ body {
 	font-family: Arial, sans-serif;
 	line-height: 1.5;
 	font-size: 16px;
-	background: #fff;
+	background: #ebebeb;
 	padding: 0;
 	margin: 0;
 	color: #000;
 	word-wrap: break-word;
 	-webkit-text-size-adjust: none;
 }
+#wrap {max-width:768px;margin:0 auto}
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 700;
 }
@@ -31,9 +32,6 @@ table {
 	width: auto;
 	border-collapse: collapse;
 	border-spacing: 0;
-}
-body {
-	background: #ebebeb;
 }
 .clear {
 	visibility: none;
@@ -125,6 +123,14 @@ body {
 	background: url('../img/ikony/otevrit.png') no-repeat 100% -10px;
 	margin-left: -20px
 }
+
+.buttonWrap {display:block;clear:both;min-height:59px;}
+.button {display:block;float:left;padding:10px;height:29px;background:white;margin-right:10px;margin-top:10px;text-decoration:none;font-weight:400!important;font-size:140%}
+a.activekey, .keybutton:hover {background:#00aba9;color:white!important;text-shadow:none!important}
+a.activeads, .adsbutton:hover {background:#a200ff;color:white!important;text-shadow:none!important}
+div.activekey {border-bottom:5px solid #00aba9}
+div.activeads {border-bottom:5px solid #a200ff}
+
 .accent {
 	color: #8cbf26
 }

@@ -14,7 +14,7 @@ if(isset($_COOKIE["Session"])) {
 <head> 
   <title>Mobyklik</title> 
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
-
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
     <!-- mobilní meta tagy -->
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
@@ -52,7 +52,7 @@ if(isset($_COOKIE["Session"])) {
 	<div data-role="content">	
 	<div id="wrap">
   
-  <?
+<?php
 if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone") or strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"ipad")) {
    if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"safari")) {
       echo('<br /><h3>Mobyklik si musíte nejdříve nainstalovat.</h3>');
@@ -82,7 +82,30 @@ if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone") or strpos(strtolowe
 <?php    
       }
 }else{
-   echo('<br /><h3>Je mi líto, ale iOS je zatím jediná otestovaná platforma. Co je v plánu? Sledujte <a style="color:white;font-weight:700" href="'.$CwebUrl.'">web Mobykliku</a>.</h3>');
+?>
+
+	
+		<?php 
+      if(isset($_GET["error"])) {
+        if($_GET["error"] == "empty") { echo "<p>Musíte vyplnit jméno i heslo</p>"; } 
+      }
+    ?>
+		<!-- form -->
+		<div data-role="fieldcontain">
+    <form data-ajax="false" action="setcookie.php" method="post">
+      <label for="name">Přihlašovací jméno:</label>
+      <input type="text" name="name" id="name" value="<?php 
+        if(isset($_COOKIE["LoginName"])) {
+          echo $_COOKIE["LoginName"]; /* Zavolá poslední login */
+        } ?>"  />
+      <br />
+      <label for="password">Heslo:</label>
+      <input type="password" name="password" id="password" value="" /><br /><br />
+      <input type="submit" value="Přihlásit" />
+    </form>
+    </div>	
+    
+<?php
 }
 ?>
     

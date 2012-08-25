@@ -55,7 +55,7 @@ if ($den != 0) {
 $hodnota = $den/$grafProklikuMax*100;
 } else {
 $hodnota = 5; }
-if ($hodnota < 10) {
+if ($hodnota < 15) {
   echo '
   <div class="wrapSloupce" style="left:'.$left.'%;width:'.$leftProcento.'%;height:'.$hodnota.'%">
   <div title="'.$den.'" class="sloupecGrafu"></div>
@@ -71,9 +71,10 @@ $n++;
 ?>
 </div>
 
-
-
-
+<div class="buttonWrap activekey">
+<a href="javascript:;" class="button activekey">Klíèová slova</a>
+<a href="ads.php?id=<?php echo $_GET["id"] ?>&back=<?php echo $_GET["back"];?>" class="button adsbutton">Reklamy</a>
+</div>
 
 <?php
   $keywords = volej("listKeywords",intval($_GET["id"]));
