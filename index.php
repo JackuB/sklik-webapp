@@ -16,33 +16,22 @@ if(isset($_COOKIE["Session"])) {
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-    <!-- mobilní meta tagy -->
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
+  <!-- mobilní meta tagy -->
+  	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />  
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         
     <link rel="apple-touch-icon-precomposed" href="img/webapp/apple-touch-icon-precomposed.png" />
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/webapp/apple-touch-icon-precomposed-iphone4.png" />
-
-    <link rel="apple-touch-startup-image" media="(max-device-width: 480px) and not (-webkit-min-device-pixel-ratio: 2)" href="img/webapp/loading-small.png" />
-    <link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="img/webapp/loading.png" />    
-    
-    <!-- /mobilní meta tagy -->
   
-	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-  <script type="text/javascript">
-    $( document ).bind( 'mobileinit', function(){
-      $.mobile.loader.prototype.options.text = "loading";
-      $.mobile.loader.prototype.options.textVisible = true;
-      $.mobile.loader.prototype.options.theme = "a";
-      $.mobile.loader.prototype.options.html = '<div class="fixed"><div id="background"></div><div id="prvni"></div><div id="druhy"></div><img class="loadingLogo" src="img/sklik_logo_bile.png" /"></div>';
-    });
-  </script>
-	<script src="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.js"></script>
+    <link rel="apple-touch-startup-image" media="(max-device-width: 480px) and not (-webkit-min-device-pixel-ratio: 2)" href="img/webapp/loading-small.png" />
+    <link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="img/webapp/loading.png" />        
+  <!-- /mobilní meta tagy -->
+  
+  <script src="js/jquery.js"></script>  
+
   <script src="js/add2home.js"></script>
   
-  
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/index.css" />
   <?php include ('google.inc'); ?>    

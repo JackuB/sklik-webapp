@@ -1,4 +1,5 @@
 <?php include ('inc/header.php') ?>
+
 <a href="adgroup.php?id=<?php echo $_GET["back"];?>"><img src="img/back.png" /></a>
 <a href="logout.php" rel="external"><img id="logout" src="img/logout.png" /></a>
 <div id="header">
@@ -115,7 +116,7 @@ $n++;
                
         echo      
         '<div class="kampan '.$status.'">
-          <a class="kampanLink otevritKeyword" href=""><span></span></a>
+          <a class="kampanLink" href=""><span></span></a>
           <div class="inside">
           <h3>'.$nazevAd.' ('.$statistiky["stats"]["clicks"].')</h3>
           <div class="keywordsData kampanData">
@@ -160,18 +161,6 @@ $n++;
       
     };       
 ?>             
-
-
-<script>
-
-jQuery(document).ready(function(){
-    $(".otevritKeyword span").unbind("click").click( function() {
-      $(this).parent().next(".inside").children(".keywordsData").slideToggle("fast");
-    });
-});
-
-
-</script>
 
 
 <?php include ('inc/footer.php') ?>
