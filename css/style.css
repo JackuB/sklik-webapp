@@ -8,7 +8,6 @@ html, body {
 	border: 0;
 }
 body {
-	font-family: Arial, sans-serif;
 	line-height: 1.5;
 	font-size: 16px;
 	background: #ebebeb;
@@ -18,7 +17,11 @@ body {
 	word-wrap: break-word;
 	-webkit-text-size-adjust: none;
 }
-#wrap {max-width:768px;margin:0 auto}
+#wrap {
+	max-width: 768px;
+	margin: 0 auto;
+	position: relative;
+}
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 700;
 }
@@ -209,33 +212,19 @@ div.activeads {border-bottom:5px solid #a200ff}
 .tealbg {
 	background-color: #00aba9
 }
-@font-face {
-	font-family: 'RobotoRegular';
-	src: url('../fonts/Roboto-Regular-webfont.eot');
-	src: url('../fonts/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Roboto-Regular-webfont.woff') format('woff'), url('../fonts/Roboto-Regular-webfont.ttf') format('truetype'), url('../fonts/Roboto-Regular-webfont.svg#RobotoRegular') format('svg');
-	font-weight: normal;
-	font-style: normal
-}
-@font-face {
-	font-family: 'RobotoLight';
-	src: url('../fonts/Roboto-Light-webfont.eot');
-	src: url('../fonts/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Roboto-Light-webfont.woff') format('woff'), url('../fonts/Roboto-Light-webfont.ttf') format('truetype'), url('../fonts/Roboto-Light-webfont.svg#RobotoLight') format('svg');
-	font-weight: normal;
-	font-style: normal
-}
 #headingstyles {
-	font-family: "Segoe UI Light", "Helvetica Neue", 'RobotoLight', "Segoe UI", "Segoe WP", sans-serif;
+	font-family: "Segoe UI Light", "Helvetica Neue", "Segoe UI", "Segoe WP", sans-serif;
 	font-weight: 100;
 	margin-top: 5px;
 	margin-bottom: 0px;
 	text-transform: lowercase
 }
 body {
-	font-family: "Segoe UI", "Segoe WP", "Helvetica Neue", 'RobotoRegular', sans-serif;
+	font-family: "Segoe UI", "Segoe WP", "Helvetica Neue", sans-serif;
 	font-size: 14px
 }
 h1, h2, h3, h4, h5, h6 {
-	font-family: "Segoe UI Light", "Helvetica Neue", 'RobotoLight', "Segoe UI", "Segoe WP", sans-serif;
+	font-family: "Segoe UI Light", "Segoe UI", "Helvetica Neue", "Segoe UI", "Segoe WP", sans-serif;
 	font-weight: 100;
 	margin-top: -5px;
 	margin-bottom: 0px;

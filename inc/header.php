@@ -30,8 +30,8 @@ time() + 60*60*24*13);
   <script src="js/jquery.js"></script>
   <script src="js/scripts.js"></script>
  
-  <?php include ('google.inc'); ?>
+  <?php include ('inc/google.inc'); ?>
 </head> 
 
 <body>
-<div id="wrap"><!-- it's a wrap! -->
+<div data-dom-cache="true" data-role="page" id="wrap"><!-- it's a wrap! -->

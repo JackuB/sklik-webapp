@@ -74,8 +74,8 @@ $n++;
 
 
 <div class="buttonWrap activeads">
-<a href="keyword.php?id=<?php echo $_GET["id"] ?>&back=<?php echo $_GET["back"];?>" class="button keybutton">Klíèová slova</a>
-<a href="javascript:;" class="button activeads">Reklamy</a>
+  <a href="keyword.php?id=<?php echo $_GET["id"];?>&back=<?php echo $_GET["back"];?>" class="button keybutton">Klíèová slova</a>
+  <a href="javascript:;" class="button activeads">Reklamy</a>
 </div>
 
 
@@ -87,12 +87,12 @@ $n++;
       $id = $ad["id"];
       $vytvoreniAd = $ad["createDate"];
       
-      if(mb_detect_encoding($ad["creative1"], 'UTF-8', true) == "UTF-8") { /* OBÈAS se keyword vrací jako UTF-8 - ale zbytek stránky je windows-1250 - WTF */
-        $nazevAd = iconv("UTF-8", "WINDOWS-1250//TRANSLIT", $ad["creative1"]);     
-      } else {
-        $nazevAd = $ad["creative1"];
-      }   
-      
+   
+      $nazevAd = prekoduj($ad["creative1"]);
+      $nazevAd2 = prekoduj($ad["creative2"]);
+      $nazevAd3 = prekoduj($ad["creative3"]);
+      $clickthruTextAd= prekoduj($ad["clickthruText"]);                  
+            
       /* dnešní datum jako objekt */     
       $datumDo = new stdClass;
       $datumDo->scalar = date("c");
@@ -116,10 +116,12 @@ $n++;
                
         echo      
         '<div class="kampan '.$status.'">
-          <a class="kampanLink" href=""><span></span></a>
+          <a class="kampanLink otevritKeyword" href=""><span></span></a>
           <div class="inside">
-          <h3>'.$nazevAd.' ('.$statistiky["stats"]["clicks"].')</h3>
-          <div class="keywordsData kampanData">
+          <h3>'.$nazevAd.'</h3>
+          <p style="margin:0">'.$nazevAd2.'<br />'.$nazevAd3.'<br /><span class="lime">'.$clickthruTextAd.'</span></p>
+          
+          <div class="kampanData">
           
             <div class="jednaTri">
               Prokliky
@@ -136,7 +138,7 @@ $n++;
               <strong>'.number_format($ctr,2,","," ").'</strong>
             </div>
                       
-           
+            <div class="keywordsData">
             <div class="jednaTri">
               Prùmìrná pozice
               <strong>'.number_format($prumernaPozice,1,","," ").'</strong>
@@ -151,7 +153,7 @@ $n++;
               Cena
               <strong>'.number_format($cena,2,","," ").'</strong>
             </div>                    
-          
+            </div>
             <br class="clear" />
           
           </div>
@@ -161,6 +163,17 @@ $n++;
       
     };       
 ?>             
+
+
+<script>
+
+jQuery(document).ready(function(){
+    $(".otevritKeyword span").unbind("click").click( function() {
+      $(this).parent().next(".inside").children(".kampanData").children(".keywordsData").slideToggle("fast");
+    });
+});
+
+</script>
 
 
 <?php include ('inc/footer.php') ?>

@@ -72,8 +72,8 @@ $n++;
 </div>
 
 <div class="buttonWrap activekey">
-<a href="javascript:;" class="button activekey">Klíèová slova</a>
-<a href="ads.php?id=<?php echo $_GET["id"] ?>&back=<?php echo $_GET["back"];?>" class="button adsbutton">Reklamy</a>
+  <a href="javascript:;" class="button activekey">Klíèová slova</a>
+  <a href="vypis_reklam.php?id=<?php echo $_GET["id"] ?>&amp;back=<?php echo $_GET["back"];?>" class="button adsbutton">Reklamy</a>
 </div>
 
 <?php
@@ -167,7 +167,6 @@ jQuery(document).ready(function(){
       $(this).parent().next(".inside").children(".keywordsData").slideToggle("fast");
     });
 });
-
 
 </script>
 

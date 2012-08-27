@@ -6,15 +6,18 @@ if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone") or strpos(strtolowe
 <html> 
 <head> 
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
-  <title>Mobyklik - mobilní rozhraní pro Sklik.cz</title> 
+  <title>Mobyklik - rozhraní pro Sklik.cz</title> 
   <meta name="keywords" content="sklik,iphone,ios,ipad,mobilní aplikace,mobilní reklamy,seznam,seznam.cz,mobilní sklik">
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/index.css" />
   <?php include ('google.inc'); ?>    
 </head> 
 
 <body> 
-	<div data-role="content">	
+
+<div id="pruh">
+  <img src="img/logo.jpg" alt="Mobyklik - mobilní rozhraní pro Sklik.cz" />
+</div>
+
 	<div id="wrap">
   
     <div class="fialova">
@@ -51,8 +54,6 @@ if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone") or strpos(strtolowe
 	 </div>	
 
 		
-	</div><!-- /content -->
-
 
 </body>
 </html>

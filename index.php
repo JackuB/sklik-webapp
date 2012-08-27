@@ -34,7 +34,7 @@ if(isset($_COOKIE["Session"])) {
   
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/index.css" />
-  <?php include ('google.inc'); ?>    
+  <?php include ('inc/google.inc'); ?>    
 </head> 
 
 <body> 
