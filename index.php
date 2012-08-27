@@ -55,6 +55,7 @@ if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone") or strpos(strtolowe
     ?>
 		<!-- form -->
 		<div data-role="fieldcontain">
+    Použijte pøihlašovací údaje jako do Sklik.cz<br /><br />    
     <form data-ajax="false" action="setcookie.php" method="post">
       <label for="name">Pøihlašovací jméno:</label>
       <input type="text" name="name" id="name" value="<?php 
@@ -64,7 +65,7 @@ if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone") or strpos(strtolowe
       <br />
       <label for="password">Heslo:</label>
       <input type="password" name="password" id="password" value="" /><br /><br />
-      <input type="submit" value="Pøihlásit" />
+      <input id="login" type="submit" value="Pøihlásit" />
     </form>
     </div>	
     
@@ -81,6 +82,7 @@ if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone") or strpos(strtolowe
     ?>
 		<!-- form -->
 		<div data-role="fieldcontain">
+    Použijte pøihlašovací údaje jako do Sklik.cz<br /><br />
     <form data-ajax="false" action="setcookie.php" method="post">
       <label for="name">Pøihlašovací jméno:</label>
       <input type="text" name="name" id="name" value="<?php 
@@ -90,19 +92,14 @@ if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),"iphone") or strpos(strtolowe
       <br />
       <label for="password">Heslo:</label>
       <input type="password" name="password" id="password" value="" /><br /><br />
-      <input type="submit" value="Pøihlásit" />
+      <input id="login" type="submit" value="Pøihlásit" />
     </form>
     </div>	
     
 <?php
 }
-?>
-    
-    
-		
+?>		
 	 </div>	
-
-		
-	</div><!-- /content -->
+	</div><!-- /content --> 
 </body>
 </html>

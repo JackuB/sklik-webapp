@@ -2,8 +2,11 @@
 
 $apiUrl = "https://api.sklik.cz/RPC2";
 
-if(($_POST["name"] != "") or ($_POST["password"] != "")) {
+if(($_POST["name"] == "") or ($_POST["password"] == "")) {
 
+  /* pøi prázdném $_POST pøesmìrujeme na index */    
+  header('Location: index.php?error=empty');
+} else { 
 
 
 $method = "client.login";
@@ -55,10 +58,7 @@ $response = xmlrpc_decode($file);
     $msg = "<p>Jiná chyba</p>";
   }
 
-} else { 
-  /* pøi prázdném $_POST pøesmìrujeme na index */    
-  header('Location: index.php?error=empty');
-} 
+}
 
 ?>
 <!DOCTYPE html> 
