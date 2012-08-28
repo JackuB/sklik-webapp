@@ -41,7 +41,12 @@ if(isset($_COOKIE["Session"])) {
   
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/index.css" />
-  <?php include ('inc/google.inc'); ?>    
+  <?php include ('inc/google.inc'); ?>
+
+  <style>
+  .ui-loader {display:none;opacity:0;visiblity:none;}
+  </style>
+      
 </head> 
 
 <body> 
