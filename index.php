@@ -1,13 +1,6 @@
-<?php
-if(isset($_COOKIE["Session"])) {
-  include ('funkce/volej.php');
-  /* je uživatelův cookie stále platný? */
-  $sessionOk = volej("client.getAttributes");  
-  if($sessionOk["status"] == "200") {
-    header('Location: welcome.php');
-  }
-}
-?>
+
+
+
 <?php include ('inc/config.php') ?>
 <!DOCTYPE html> 
 <html> 
@@ -15,7 +8,21 @@ if(isset($_COOKIE["Session"])) {
   <title>Mobyklik</title> 
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
+<?php
+if(isset($_COOKIE["Session"])) {
+  include ('funkce/volej.php');
+  /* je uživatelův cookie stále platný? */
+  $sessionOk = volej("client.getAttributes");  
+  if($sessionOk["status"] == "200") { ?>
+    <script type="text/javascript">
+    <!--
+    window.location = "welcome.php"
+    //-->
+    </script>
+<?php
+  }
+}
+?>
   <!-- mobilní meta tagy -->
   	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />  
