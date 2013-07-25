@@ -63,4 +63,17 @@ function volej($metoda,$dalsi = "") {
 		die("Server vrátil prázdnou odpovìï (nebo odpovìï neodpovídá formátu XMLRPC). Zkuste to pozdìji.");
 	}
 }
+
+
+function prekoduj($co) {
+
+  if(mb_detect_encoding($co, 'UTF-8', true) == "UTF-8") { /* OBÈAS se nìco vrací jako UTF-8 - ale zbytek obsahu je windows-1250 - WTF */
+    $vysledek = iconv("UTF-8", "WINDOWS-1250//TRANSLIT", $co);
+  } else {
+    $vysledek = $co;
+  }
+  return $vysledek;
+
+}
+
 ?>
