@@ -47,20 +47,26 @@ function volej($metoda,$dalsi = "") {
 			switch ($odpoved["status"]) {
 			    case 500:
 			        echo "Chyba serveru";
+			        print_r($odpoved);
 			        break;
 			    case 400:
 			        echo "Špatné parametry volání";
+			        print_r($odpoved);
 			        break;
 			    case 401:
 			        echo "Problém s vaší session. Zkuste se znovu pøihlásit.";
+			        print_r($odpoved);
 			        break;
 			    case 404:
 			        echo "Nenalezen server Skliku";
+			        print_r($odpoved);
 			        break;
 			}
 		}
 	} else {
-		die("Server vrátil prázdnou odpovìï (nebo odpovìï neodpovídá formátu XMLRPC). Zkuste to pozdìji.");
+		echo "Server vrátil prázdnou odpovìï (nebo odpovìï neodpovídá formátu XMLRPC). Zkuste to pozdìji.";
+		print_r($odpoved);
+		die;
 	}
 }
 
